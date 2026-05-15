@@ -68,6 +68,9 @@ public class SearchStockController implements Initializable {
 
         int monthNo = Integer.parseInt( checkBox.getUserData().toString() );
 
+        if (monthNo == 0)
+            return;//to prevent divide by zero error
+
         for (Node node : stocks) {
             Label label = (Label)node;
             int number = Integer.parseInt( label.getText().trim() );
