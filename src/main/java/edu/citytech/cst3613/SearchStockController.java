@@ -71,8 +71,6 @@ public class SearchStockController implements Initializable {
         if (monthNo == 0) {
             boolean isSelected = checkBox.isSelected();
             selectAllMonths(isSelected);
-
-
             return;
         }
             
