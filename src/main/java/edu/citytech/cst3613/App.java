@@ -17,7 +17,7 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML("SearchStocks"));
+        scene = new Scene(loadFXML("CounterTreeView"));
         stage.setScene(scene);
         stage.setTitle("Usman, Muhammad " + new java.util.Date());
         stage.show();

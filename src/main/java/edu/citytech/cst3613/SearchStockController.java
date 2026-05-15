@@ -93,5 +93,4 @@ public class SearchStockController implements Initializable {
             checkBox.setSelected(isSelected);
         }
     }
-
 }
