@@ -45,7 +45,6 @@ public class SearchStockController implements Initializable {
     
     }
     public void count(int i, int multipleOf) {
-        int start = 0;
         for (Node node : stocks) {
             Label label = (Label)node;
             label.setText( (i = i + 1) * multipleOf + "" );
@@ -68,8 +67,15 @@ public class SearchStockController implements Initializable {
 
         int monthNo = Integer.parseInt( checkBox.getUserData().toString() );
 
-        if (monthNo == 0)
-            return;//to prevent divide by zero error
+        //to prevent divide by zero error
+        if (monthNo == 0) {
+            boolean isSelected = checkBox.isSelected();
+            selectAllMonths(isSelected);
+
+
+            return;
+        }
+            
 
         for (Node node : stocks) {
             Label label = (Label)node;
@@ -78,6 +84,15 @@ public class SearchStockController implements Initializable {
             label.getStyleClass().remove("month-color");
             if (number % monthNo == 0 )
                 label.getStyleClass().add("month-color");
+        }
+    }
+
+    private void selectAllMonths(boolean isSelected) {
+        ObservableList<Node> months = fpMonths.getChildren();
+        
+        for (Node node : months) {
+            var checkBox = (CheckBox)node;
+            checkBox.setSelected(isSelected);
         }
     }
 
