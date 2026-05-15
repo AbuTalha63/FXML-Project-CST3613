@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="686.0" prefWidth="786.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.citytech.cst3613.SearchStockController">
+   <children>
+      <Label fx:id="lblTitle" alignment="CENTER" layoutX="285.0" layoutY="5.0" prefHeight="45.0" prefWidth="195.0" text="Stocks Search" />
+      <FlowPane fx:id="fpMarketCap" layoutX="37.0" layoutY="204.0" prefHeight="77.0" prefWidth="744.0">
+         <children>
+            <RadioButton mnemonicParsing="false" onAction="#selectMarketCap" selected="true" text="All" userData="0">
+               <toggleGroup>
+                  <ToggleGroup fx:id="tgMarketCap" />
+               </toggleGroup>
+            </RadioButton>
+            <RadioButton mnemonicParsing="false" onAction="#selectMarketCap" text="0 - 100M" toggleGroup="$tgMarketCap" userData="1" />
+            <RadioButton mnemonicParsing="false" onAction="#selectMarketCap" text="100M - 500M" toggleGroup="$tgMarketCap" userData="2" />
+            <RadioButton mnemonicParsing="false" onAction="#selectMarketCap" text="500M - 1B" toggleGroup="$tgMarketCap" userData="3" />
+            <RadioButton mnemonicParsing="false" onAction="#selectMarketCap" text="1B - 30B" toggleGroup="$tgMarketCap" userData="4" />
+            <RadioButton mnemonicParsing="false" onAction="#selectMarketCap" text="30B - 200B" toggleGroup="$tgMarketCap" userData="5" />
+            <RadioButton mnemonicParsing="false" onAction="#selectMarketCap" text="200B - 500B" toggleGroup="$tgMarketCap" userData="6" />
+            <RadioButton mnemonicParsing="false" onAction="#selectMarketCap" text="500B - 750B" toggleGroup="$tgMarketCap" userData="7" />
+            <RadioButton mnemonicParsing="false" onAction="#selectMarketCap" text="750B - 999B" toggleGroup="$tgMarketCap" userData="8" />
+            <RadioButton mnemonicParsing="false" onAction="#selectMarketCap" text="999B - 2T" toggleGroup="$tgMarketCap" userData="9" />
+            <RadioButton mnemonicParsing="false" onAction="#selectMarketCap" text="2T - 36T" toggleGroup="$tgMarketCap" userData="10" />
+         </children>
+      </FlowPane>
+      <FlowPane fx:id="fpStocks" layoutX="43.0" layoutY="290.0" prefHeight="303.0" prefWidth="706.0">
+         <children>
+            <Label text="Stock 1" />
+            <Label text="Stock 1" />
+            <Label text="Stock 1" />
+            <Label text="Stock 1" />
+            <Label text="Stock 1" />
+            <Label text="Stock 1" />
+            <Label text="Stock 1" />
+            <Label text="Stock 1" />
+            <Label text="Stock 1" />
+            <Label text="Stock 1" />
+            <Label text="Stock 1" />
+            <Label text="Stock 1" />
+            <Label text="Stock 1" />
+            <Label text="Stock 1" />
+            <Label text="Stock 1" />
+            <Label text="Stock 1" />
+            <Label text="Stock 1" />
+            <Label text="Stock 1" />
+            <Label text="Stock 1" />
+            <Label text="Stock 1" />
+            <Label text="Stock 1" />
+            <Label text="Stock 1" />
+            <Label text="Stock 1" />
+            <Label text="Stock 1" />
+            <Label text="Stock 1" />
+            <Label text="Stock 1" />
+            <Label text="Stock 1" />
+            <Label text="Stock 1" />
+            <Label text="Stock 1" />
+            <Label text="Stock 1" />
+            <Label text="Stock 1" />
+            <Label text="Stock 1" />
+            <Label text="Stock 1" />
+            <Label text="Stock 1" />
+            <Label text="Stock 1" />
+            <Label text="Stock 1" />
+            <Label text="Stock 1" />
+            <Label text="Stock 1" />
+            <Label text="Stock 1" />
+            <Label text="Stock 1" />
+            <Label text="Stock 1" />
+            <Label text="Stock 1" />
+            <Label text="Stock 1" />
+            <Label text="Stock 1" />
+            <Label text="Stock 1" />
+            <Label text="Stock 1" />
+            <Label text="Stock 1" />
+            <Label text="Stock 1" />
+            <Label text="Stock 1" />
+            <Label text="Stock 1" />
+            <Label text="Stock 1" />
+            <Label text="Stock 1" />
+            <Label text="Stock 1" />
+            <Label text="Stock 1" />
+            <Label text="Stock 1" />
+            <Label text="Stock 1" />
+            <Label text="Stock 1" />
+            <Label text="Stock 1" />
+            <Label text="Stock 1" />
+            <Label text="Stock 1" />
+            <Label text="Stock 1" />
+            <Label text="Stock 1" />
+            <Label text="Stock 1" />
+            <Label text="Stock 1" />
+            <Label text="Stock 1" />
+            <Label text="Stock 1" />
+            <Label text="Stock 1" />
+            <Label text="Stock 1" />
+            <Label text="Stock 1" />
+            <Label text="Stock 1" />
+            <Label text="Stock 1" />
+            <Label text="Stock 1" />
+            <Label text="Stock 1" />
+            <Label text="Stock 1" />
+            <Label text="Stock 1" />
+            <Label text="Stock 1" />
+            <Label text="Stock 1" />
+         </children>
+      </FlowPane>
+      <Button layoutX="367.0" layoutY="622.0" mnemonicParsing="false" text="Search" />
+      <AnchorPane layoutX="80.0" layoutY="27.0" prefHeight="47.0" prefWidth="573.0">
+         <children>
+            <Label layoutX="35.0" layoutY="32.0" text="Stock prices between" />
+            <TextField layoutX="158.0" layoutY="28.0" />
+            <Label layoutX="317.0" layoutY="32.0" text="and" />
+            <TextField layoutX="345.0" layoutY="28.0" />
+         </children>
+      </AnchorPane>
+      <Text layoutX="40.0" layoutY="197.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Market Cap:" />
+      <Label fx:id="lblRowCount" layoutX="565.0" layoutY="622.0" text="Row Count is 77:" />
+      <Label layoutX="58.0" layoutY="627.0" text="Developer: Muhammad Usman" />
+      <FlowPane fx:id="fpMonths" layoutX="27.0" layoutY="102.0" prefHeight="83.0" prefWidth="746.0">
+         <children>
+            <!-- Developer: Usman, Muhammad -->
+            <CheckBox mnemonicParsing="false" onAction="#monthSelection" text="All" userData="0" />
+            <CheckBox mnemonicParsing="false" onAction="#monthSelection" text="Jan" userData="1" />
+            <CheckBox mnemonicParsing="false" onAction="#monthSelection" text="Feb" userData="2" />
+            <CheckBox mnemonicParsing="false" onAction="#monthSelection" text="March" userData="3" />
+            <CheckBox mnemonicParsing="false" onAction="#monthSelection" text="April" userData="4" />
+            <CheckBox mnemonicParsing="false" onAction="#monthSelection" text="May" userData="5" />
+            <CheckBox mnemonicParsing="false" onAction="#monthSelection" text="June" userData="6" />
+            <CheckBox mnemonicParsing="false" onAction="#monthSelection" text="July" userData="7" />
+            <CheckBox mnemonicParsing="false" onAction="#monthSelection" text="August" userData="8" />
+            <CheckBox mnemonicParsing="false" onAction="#monthSelection" text="Sept" userData="9" />
+            <CheckBox mnemonicParsing="false" onAction="#monthSelection" text="Oct" userData="10" />
+            <CheckBox mnemonicParsing="false" onAction="#monthSelection" text="Nov" userData="11" />
+            <CheckBox mnemonicParsing="false" onAction="#monthSelection" text="Dec" userData="12" />
+         </children>
+      </FlowPane>
+   </children>
+   <stylesheets>
+      <URL value="@index.css" />
+      <URL value="@../../../css/index.css" />
+   </stylesheets>
+</AnchorPane>

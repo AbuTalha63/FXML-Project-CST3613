@@ -1,0 +1,33 @@
+#lblTitle {
+    -fx-font-size: 30px;
+}
+
+.radio {
+    -fx-min-width: 1.4in;
+}
+
+#fpMarketCap {
+    -fx-vgap: 10px;;
+}
+
+.month-color {
+    -fx-background-color: pink;
+}
+
+#fpStocks .label, #lblRowCount{
+    -fx-border-color: black;
+    -fx-border-style: solid;
+    -fx-border-width: .5px;
+    -fx-min-width: 1in;
+    -fx-padding: 2.5px;
+
+}
+
+#fpStocks {
+    -fx-vgap: 1.5px;
+    -fx-hgap: 1.5px;
+}
+
+
+
+
