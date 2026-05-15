@@ -35,6 +35,18 @@ public class CounterController implements Initializable{
         }
 
         populateTreeView();
+
+        treeViewNumberSelection();
+    }
+
+    private void treeViewNumberSelection() {
+        var x = tvCounter.getSelectionModel().selectedItemProperty();
+
+        x.addListener( (a, b, c ) -> {
+            System.out.println( c.getValue() );
+
+            lblCountBy.setText("Count by: " + c.getValue());
+        });
     }
 
     CounterService counterservice = new CounterService();
