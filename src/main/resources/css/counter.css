@@ -1,18 +1,20 @@
 #fpNumbers .label {
     -fx-border-color: black;
-    -fx-border-width: 0.1px;
+    -fx-border-width: 1.7px;
     -fx-border-style: solid;
-    -fx-min-width: 20px;
-    -fx-padding: 1.3px;
-    -fx-alignement: center;
+    -fx-padding: .5px;
+    -fx-padding: 6px 10px;
+    -fx-border-radius: 3px;
+    -fx-min-width: .5in;
 }
+    
 #lblCountBy {
     -fx-font-size: 50pt;
 }
 
 #fpNumbers {
-    -fx-vgap: 0.4in;
-    -fx-hgap: 0.4in;
+    -fx-vgap: 7px;
+    -fx-hgap: 10px;
     -fx-padding: 6px;
     -fx-border-color: black;
 }
