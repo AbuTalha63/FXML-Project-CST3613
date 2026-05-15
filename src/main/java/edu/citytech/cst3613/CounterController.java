@@ -41,7 +41,17 @@ public class CounterController implements Initializable{
 
     private void populateTreeView() {
         TreeItem<String> rootItem = new TreeItem<>("Numbers");
+        var children = rootItem.getChildren();
+        rootItem.setExpanded(true);
+
         var numbers = counterservice.getNumbers();
+
+        for (CounterService.Digit digit : numbers) {
+            TreeItem<String> item = new TreeItem<>(digit.description);
+            children.add(item);
+        }
+
+        tvCounter.setRoot(rootItem);
         
     }
 }
