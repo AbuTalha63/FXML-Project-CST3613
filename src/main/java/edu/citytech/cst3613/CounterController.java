@@ -26,17 +26,24 @@ public class CounterController implements Initializable{
 
     @Override
     public void initialize(URL url, ResourceBundle resource) {
-        
+
+        generateLabels(-5);
+        populateTreeView();
+        treeViewNumberSelection();
+
+    }
+
+    public void generateLabels(int startNumber) {
         ObservableList<Node> children = fpNumbers.getChildren(); //newer version of java u can just declare as var, thi suspports all
 
-        for (int i = 0; i < 200; i++) {
+        for (int i = startNumber; i < 200; i++) {
             Label label = new Label(i + "");
             children.add(label);
         }
-
+        
         populateTreeView();
-
         treeViewNumberSelection();
+
     }
 
     private void treeViewNumberSelection() {
@@ -45,9 +52,10 @@ public class CounterController implements Initializable{
         x.addListener( (a, b, c ) -> {
             System.out.println( c.getValue() );
 
-            lblCountBy.setText("Count by: " + c.getValue());
+            lblCountBy.setText( "Count by: " + c.getValue() ); 
         });
     }
+
 
     CounterService counterservice = new CounterService();
 
@@ -64,6 +72,6 @@ public class CounterController implements Initializable{
         }
 
         tvCounter.setRoot(rootItem);
-        
+
     }
 }
