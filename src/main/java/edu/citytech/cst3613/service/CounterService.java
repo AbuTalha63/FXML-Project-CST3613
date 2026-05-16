@@ -26,6 +26,16 @@ public class CounterService {
         return this.listOfNumbers;
     }
 
+    public int getNumberVersion(String sNumber) {
+
+        for (Digit digit : listOfNumbers) {
+            if (digit.description.equals(sNumber))
+                return digit.number;
+        }
+
+        return -6;
+    }
+
     public CounterService() {
         //A Constructor here has same name as the class
         //when we instantiate this, this will be the first thing executed

@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TreeView?>
@@ -11,15 +14,27 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="678.0" prefWidth="834.0" stylesheets="@../../../css/counter.css" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.citytech.cst3613.CounterController">
    <children>
       <TreeView fx:id="tvCounter" layoutX="24.0" layoutY="158.0" prefHeight="480.0" prefWidth="242.0" />
-      <ImageView fitHeight="129.0" fitWidth="231.0" layoutX="7.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="113.0" fitWidth="194.0" layoutX="14.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../images/n123.jpg" />
          </image>
       </ImageView>
-      <Label fx:id="lblCountBy" layoutX="226.0" layoutY="27.0" prefHeight="17.0" prefWidth="463.0" text="Count by" />
-      <Label layoutX="26.0" layoutY="639.0" text="Developer: Usman, Muhammad" />
+      <Label fx:id="lblCountBy" layoutX="226.0" layoutY="27.0" prefHeight="58.0" prefWidth="598.0" text="Count by" />
+      <Label fx:id="lblDeveloperInformation" layoutX="26.0" layoutY="639.0" text="Developer: Usman, Muhammad" />
       <ScrollPane layoutX="275.0" layoutY="158.0" prefHeight="483.0" prefWidth="556.0">
         <FlowPane fx:id="fpNumbers" layoutX="279.0" layoutY="158.0" prefHeight="480.0" prefWidth="546.0" />
       </ScrollPane>
+      <ComboBox layoutX="91.0" layoutY="118.0" onAction="#selectStartWith" prefWidth="150.0" value= "0" promptText="Select">
+         <items>
+         <FXCollections fx:factory="observableArrayList">
+            <String fx:value="zero" />
+            <String fx:value="one" />
+            <String fx:value="two" />
+            <String fx:value="three" />
+            <String fx:value="four" />
+         </FXCollections>
+         </items>
+      </ComboBox>
+      <Label layoutX="31.0" layoutY="122.0" text="Start with:" />
    </children>
 </AnchorPane>
