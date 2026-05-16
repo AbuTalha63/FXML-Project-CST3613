@@ -24,7 +24,7 @@
       <ScrollPane layoutX="275.0" layoutY="158.0" prefHeight="483.0" prefWidth="556.0">
         <FlowPane fx:id="fpNumbers" layoutX="279.0" layoutY="158.0" prefHeight="480.0" prefWidth="546.0" />
       </ScrollPane>
-      <ComboBox layoutX="91.0" layoutY="118.0" onAction="#selectStartWith" prefWidth="150.0" value= "0" promptText="Select">
+      <ComboBox fx:id="cbStartsWith" layoutX="91.0" layoutY="118.0" onAction="#selectStartWith" prefWidth="150.0" promptText="Select" value="0">
          <items>
          <FXCollections fx:factory="observableArrayList">
             <String fx:value="zero" />

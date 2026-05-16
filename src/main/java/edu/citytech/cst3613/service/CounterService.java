@@ -40,6 +40,7 @@ public class CounterService {
         //A Constructor here has same name as the class
         //when we instantiate this, this will be the first thing executed
 
+        listOfNumbers.add(new Digit("zero", 0));
         listOfNumbers.add(new Digit("one", 1));
         listOfNumbers.add(new Digit("two", 2));
         listOfNumbers.add(new Digit("three", 3));

@@ -1,6 +1,7 @@
 package edu.citytech.cst3613;
 
 import java.net.URL;
+import java.text.DecimalFormat;
 import java.util.ResourceBundle;
 
 import edu.citytech.cst3613.service.CounterService;
@@ -14,7 +15,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
 import javafx.scene.layout.FlowPane;
-import javafx.scene.control.ComboBox;
 
 public class CounterController implements Initializable{
 
@@ -27,24 +27,40 @@ public class CounterController implements Initializable{
     @FXML
     private TreeView<String> tvCounter;
 
+    @FXML
+    private ComboBox<String> cbStartsWith;
+
     @Override
     public void initialize(URL url, ResourceBundle resource) {
-
-        generateLabels(-5);
+        generateLabel(-5, 0);
         populateTreeView();
         treeViewNumberSelection();
-
     }
 
-    public void generateLabels(int startNumber) {
-        ObservableList<Node> children = fpNumbers.getChildren(); //newer version of java u can just declare as var, thi suspports all
+    public void generateLabel(int incrementBy, int startWith) {
+        ObservableList<Node> children = fpNumbers.getChildren(); //newer version of java u can just declare as var, this style suspports all
 
         fpNumbers.getChildren().clear();
+        String sNumbers = "";
 
-        for (int i = 0 ; i < 200; i++) {
-            Label label = new Label(i * startNumber + "");
+        int i = 0, total = startWith;
+
+        do {
+            sNumbers = total + "";
+            Label label = new Label(sNumbers);
             children.add(label);
-        }
+            i++;
+            total = total + incrementBy;
+
+        } while ( i < 200);
+    }
+
+    
+        private String commaFormat(int number) {
+        String sNumber = number + "";
+        double amount = Double.parseDouble(sNumber);
+        DecimalFormat formatter = new DecimalFormat("#,###");
+        return (formatter.format(amount));
     }
 
     private void treeViewNumberSelection() {
@@ -53,22 +69,23 @@ public class CounterController implements Initializable{
         x.addListener( (a, b, c ) -> {
             System.out.println( c.getValue() );
 
-            int number = counterservice.getNumberVersion(c.getValue());
+            int number = counterService.getNumberVersion(c.getValue());
             lblCountBy.setText( "Count by: " + c.getValue() + ": " + number);
             
-            generateLabels(number);
+            int startsWith = counterService.getNumberVersion(cbStartsWith.getValue());
+            generateLabel(number, startsWith);
         });
     }
 
 
-    CounterService counterservice = new CounterService();
+    CounterService counterService = new CounterService();
 
     private void populateTreeView() {
         TreeItem<String> rootItem = new TreeItem<>("Numbers");
         var children = rootItem.getChildren();
         rootItem.setExpanded(true);
 
-        var numbers = counterservice.getNumbers();
+        var numbers = counterService.getNumbers();
 
         for (CounterService.Digit digit : numbers) {
             TreeItem<String> item = new TreeItem<>(digit.description);
@@ -83,8 +100,9 @@ public class CounterController implements Initializable{
         @FXML
     void selectStartWith(ActionEvent event) {
         
-        ComboBox<String> comboBox = (ComboBox<String>)event.getSource(); 
-        System.out.println(comboBox.getValue());
+        ComboBox<String> comboBox = (ComboBox<String>)event.getSource();
+        int number = counterService.getNumberVersion(comboBox.getValue());
+        System.out.println(comboBox.getValue() +" "+ number);
 
         
     }
