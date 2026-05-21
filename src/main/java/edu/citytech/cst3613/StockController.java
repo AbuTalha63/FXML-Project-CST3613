@@ -33,21 +33,22 @@ public class StockController implements Initializable{
     @FXML
     private ComboBox<String> cbStartsWith;
 
+    private StockService stockService = new StockService();
+
     @Override
     public void initialize(URL url, ResourceBundle resource) {
         cbStartsWith.getItems().clear();        
-        generateLabel(-5, 0);
+        generateLabel("all");
         populateTreeView();
         treeViewNumberSelection();
     }
 
-    public void generateLabel(int incrementBy, int startWith) {
+    public void generateLabel(String query) {
         ObservableList<Node> children = fpNumbers.getChildren(); //newer version of java u can just declare as var, this style suspports all
 
         fpNumbers.getChildren().clear();
 
-        var stockService = new StockService();
-        List<Stock> list = stockService.getStocks();
+        List<Stock> list = stockService.getStocks(query);
 
         for (Stock stock : list) {
             Label label = new Label(stock.symbol + " | " + commaFormat(stock.marketCapInBillions) + 
@@ -65,16 +66,14 @@ public class StockController implements Initializable{
     }
 
     private void treeViewNumberSelection() {
+
         var x = tvCounter.getSelectionModel().selectedItemProperty();
-
         x.addListener( (a, b, c ) -> {
-            System.out.println( c.getValue() );
 
-            int number = counterService.getNumberVersion(c.getValue());
-            lblCountBy.setText( "Count by: " + c.getValue() + ": " + number);
-            
-            int startsWith = counterService.getNumberVersion(cbStartsWith.getValue());
-            generateLabel(number, startsWith);
+            System.out.println("Count by: " + c.getValue() + ": ");
+            String queryData = c.getValue().split(" ")[0];
+            generateLabel(queryData);
+
         });
     }
 
@@ -82,17 +81,24 @@ public class StockController implements Initializable{
     CounterService counterService = new CounterService();
 
     private void populateTreeView() {
-        TreeItem<String> rootItem = new TreeItem<>("Letters");
+        TreeItem<String> rootItem = new TreeItem<>("All");
         var children = rootItem.getChildren();
         rootItem.setExpanded(true);
 
         var numbers = CounterService.ABC();
+        var mapping = stockService.getMapping();
 
         for (Character digit : numbers) {
-            TreeItem<String> item = new TreeItem<>(digit + "");
+
+            if (mapping.containsKey(digit)){
+
+            int count = mapping.get(digit);
+
+            TreeItem<String> item = new TreeItem<>(digit + " " + count);
             //cbStartsWith.getItems().add(digit.description);
             children.add(item);
         }
+    }
 
         tvCounter.setRoot(rootItem);
 
