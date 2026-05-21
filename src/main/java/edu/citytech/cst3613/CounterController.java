@@ -32,6 +32,7 @@ public class CounterController implements Initializable{
 
     @Override
     public void initialize(URL url, ResourceBundle resource) {
+        cbStartsWith.getItems().clear();        
         generateLabel(-5, 0);
         populateTreeView();
         treeViewNumberSelection();
@@ -52,10 +53,10 @@ public class CounterController implements Initializable{
             i++;
             total = total + incrementBy;
 
-        } while ( i < 200);
+        } while ( i < 203);
     }
 
-    
+
         private String commaFormat(int number) {
         String sNumber = number + "";
         double amount = Double.parseDouble(sNumber);
@@ -89,6 +90,7 @@ public class CounterController implements Initializable{
 
         for (CounterService.Digit digit : numbers) {
             TreeItem<String> item = new TreeItem<>(digit.description);
+            cbStartsWith.getItems().add(digit.description);
             children.add(item);
         }
 
