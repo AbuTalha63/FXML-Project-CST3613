@@ -1,31 +1,17 @@
 package edu.citytech.cst3613.dto;
 
-import java.util.List;
-
 public class Stock {
 
-    private List<String> data;
-    private int size;
-
-    public List<String> getData() {
-        return data;
-    }
-
-    public void setData(List<String> data) {
-        this.data = data;
-    }
-
-    public int getSize() {
-        return size;
-    }
-
-    public void setSize(int size) {
-        this.size = size;
-    }
+    public int rank = 0;
+    public String symbol = "";
+    public String companyName = "";
+    public float marketCapInBillions = 0;
+    public float divYield = 0;
 
     @Override
     public String toString() {
-        return "Stock [data=" + data + ", size=" + size + "]";
+        return "Stock [rank=" + rank + ", symbol=" + symbol + ", companyName=" + companyName + ", marketCap="
+                + marketCapInBillions + ", divYield=" + divYield + "]";
     }
 
 }

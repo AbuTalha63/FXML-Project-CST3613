@@ -22,9 +22,4 @@ public class StockResult {
     public String toString() {
         return "StockResult [data=" + data + ", size=" + size + "]";
     }
-
-
-
-
-
 }

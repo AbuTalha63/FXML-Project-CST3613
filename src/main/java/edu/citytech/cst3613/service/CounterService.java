@@ -73,6 +73,15 @@ public class CounterService {
         listOfNumbers.add(new Digit("thirty", 30));
     }
 
+    public static List<Character> ABC() {
+
+        List<Character> alphabets = new ArrayList<>();
+
+        for (char ch = 'A'; ch <= 'Z'; ch++) {
+            alphabets.add(ch);
+        }
+        return alphabets;
+    }
 
 
     public static void main(String[] args) {

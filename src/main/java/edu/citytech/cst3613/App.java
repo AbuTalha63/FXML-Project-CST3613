@@ -16,8 +16,8 @@ public class App extends Application {
     private static Scene scene;
 
     @Override
-    public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML("CounterTreeView"));
+    public void start(@SuppressWarnings("exports") Stage stage) throws IOException {
+        scene = new Scene(loadFXML("StockTreeView"));
         stage.setScene(scene);
         stage.setTitle("Usman, Muhammad " + new java.util.Date());
         stage.show();
@@ -35,5 +35,4 @@ public class App extends Application {
     public static void main(String[] args) {
         launch();
     }
-
 }

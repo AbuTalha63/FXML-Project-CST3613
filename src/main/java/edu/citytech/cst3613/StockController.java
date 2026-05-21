@@ -1,0 +1,111 @@
+package edu.citytech.cst3613;
+
+import java.net.URL;
+import java.text.DecimalFormat;
+import java.util.List;
+import java.util.ResourceBundle;
+
+import edu.citytech.cst3613.dto.Stock;
+import edu.citytech.cst3613.service.CounterService;
+import edu.citytech.cst3613.service.StockService;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.TreeItem;
+import javafx.scene.control.TreeView;
+import javafx.scene.layout.FlowPane;
+
+public class StockController implements Initializable{
+
+    @FXML
+    private FlowPane fpNumbers;
+
+    @FXML
+    private Label lblCountBy;
+
+    @FXML
+    private TreeView<String> tvCounter;
+
+    @FXML
+    private ComboBox<String> cbStartsWith;
+
+    @Override
+    public void initialize(URL url, ResourceBundle resource) {
+        cbStartsWith.getItems().clear();        
+        generateLabel(-5, 0);
+        populateTreeView();
+        treeViewNumberSelection();
+    }
+
+    public void generateLabel(int incrementBy, int startWith) {
+        ObservableList<Node> children = fpNumbers.getChildren(); //newer version of java u can just declare as var, this style suspports all
+
+        fpNumbers.getChildren().clear();
+
+        var stockService = new StockService();
+        List<Stock> list = stockService.getStocks();
+
+        for (Stock stock : list) {
+            Label label = new Label(stock.symbol + " | " + commaFormat(stock.marketCapInBillions) + 
+            " | " + commaFormat(stock.divYield * 100) + "%");
+            children.add(label);
+        }
+
+    }
+
+        private String commaFormat(double number) {
+        String sNumber = number + "";
+        double amount = Double.parseDouble(sNumber);
+        DecimalFormat formatter = new DecimalFormat("#,#00.000");
+        return (formatter.format(amount));
+    }
+
+    private void treeViewNumberSelection() {
+        var x = tvCounter.getSelectionModel().selectedItemProperty();
+
+        x.addListener( (a, b, c ) -> {
+            System.out.println( c.getValue() );
+
+            int number = counterService.getNumberVersion(c.getValue());
+            lblCountBy.setText( "Count by: " + c.getValue() + ": " + number);
+            
+            int startsWith = counterService.getNumberVersion(cbStartsWith.getValue());
+            generateLabel(number, startsWith);
+        });
+    }
+
+
+    CounterService counterService = new CounterService();
+
+    private void populateTreeView() {
+        TreeItem<String> rootItem = new TreeItem<>("Letters");
+        var children = rootItem.getChildren();
+        rootItem.setExpanded(true);
+
+        var numbers = CounterService.ABC();
+
+        for (Character digit : numbers) {
+            TreeItem<String> item = new TreeItem<>(digit + "");
+            //cbStartsWith.getItems().add(digit.description);
+            children.add(item);
+        }
+
+        tvCounter.setRoot(rootItem);
+
+    }
+
+
+    @FXML
+    void selectStartWith(ActionEvent event) {
+        
+        ComboBox<String> comboBox = (ComboBox<String>)event.getSource();
+        int number = counterService.getNumberVersion(comboBox.getValue());
+        System.out.println(comboBox.getValue() +" "+ number);
+
+        
+    }
+}

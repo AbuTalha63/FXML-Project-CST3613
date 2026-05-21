@@ -5,7 +5,7 @@
     -fx-padding: .5px;
     -fx-padding: 6px 10px;
     -fx-border-radius: 3px;
-    -fx-min-width: .7in;
+    -fx-min-width: 1.7in;
 }
     
 #lblCountBy {
@@ -14,7 +14,7 @@
 
 #fpNumbers {
     -fx-vgap: 7px;
-    -fx-hgap: 10px;
+    -fx-hgap: 18px;
     -fx-padding: 6px;
     -fx-border-color: black;
 }
